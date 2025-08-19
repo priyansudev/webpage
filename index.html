@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Priyanshu Dev - Portfolio</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #f4f4f5;
+      --card: #fff;
+      --border: #e4e4e7;
+      --text: #18181b;
+      --muted: #52525b;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      margin: 0;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 90px auto 40px;
+      padding: 0 20px;
+    }
+    
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    
+    /* Top Bar - Sleek Design */
+    .top-bar {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 868px;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(228, 228, 231, 0.6);
+      border-radius: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 16px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02);
+      z-index: 1000;
+    }
+    
+    .top-bar .logo {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+      opacity: 0.9;
+    }
+    
+    .top-bar a {
+      background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .top-bar a:hover {
+      background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* Hero Section - Fixed Layout */
+    .hero-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    
+    .hero-title {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .status-badge {
+      background: #d1fae5;
+      color: #065f46;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+    }
+    
+    .hero-content h1 {
+      font-size: 32px;
+      margin: 0 0 12px 0;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    
+    .hero-content p {
+      margin: 0 0 24px 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      min-height: 44px;
+      white-space: nowrap;
+    }
+    
+    .btn-black { 
+      background: #000; 
+      color: #fff; 
+    }
+    
+    .btn-black:hover {
+      background: #333;
+      transform: translateY(-1px);
+    }
+    
+    .btn-light { 
+      background: #f4f4f5; 
+      border: 1px solid var(--border); 
+      color: var(--text); 
+    }
+    
+    .btn-light:hover {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 12px;
+      color: #71717a;
+      line-height: 1.3;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    /* Sections */
+    .section {
+      margin-top: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    
+    .section h2 {
+      font-size: 20px;
+      margin: 0 0 16px 0;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .skills span {
+      display: inline-block;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    
+    .skills span:hover {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    /* Contact cards */
+    .contact-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+    
+    .contact-card:hover {
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transform: translateY(-1px);
+    }
+    
+    .contact-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .contact-left i {
+      font-size: 20px;
+      color: #18181b;
+      width: 24px;
+      text-align: center;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .contact-info .label {
+      font-size: 13px;
+      color: #71717a;
+      margin-bottom: 2px;
+    }
+    
+    .contact-info .value {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .contact-card .arrow {
+      font-size: 16px;
+      color: var(--muted);
+      transition: transform 0.2s ease;
+    }
+    
+    .contact-card:hover .arrow {
+      transform: translate(2px, -2px);
+    }
+    
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: #71717a;
+      margin-top: 32px;
+      padding: 20px 0;
+    }
+    
+    /* Mobile Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        margin-top: 100px;
+        padding: 0 16px;
+      }
+      
+      .top-bar {
+        top: 12px;
+        width: calc(100% - 24px);
+        max-width: 876px;
+        padding: 6px 12px;
+      }
+      
+      .top-bar .logo {
+        font-size: 14px;
+      }
+      
+      .top-bar a {
+        padding: 6px 14px;
+        font-size: 12px;
+        border-radius: 12px;
+      }
+      
+      .card {
+        padding: 24px;
+      }
+      
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+        justify-items: center;
+      }
+      
+      .hero-header {
+        justify-content: center;
+        text-align: center;
+      }
+      
+      .hero-content h1 {
+        font-size: 28px;
+      }
+      
+      .hero-content p {
+        font-size: 15px;
+      }
+      
+      .hero-buttons {
+        justify-content: center;
+      }
+      
+      .btn {
+        min-width: 120px;
+        padding: 10px 16px;
+      }
+      
+      .avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 11px;
+        order: -1;
+        margin: 0 auto;
+      }
+      
+      .section {
+        padding: 20px;
+      }
+      
+      .section h2 {
+        font-size: 18px;
+      }
+      
+      .skills span {
+        font-size: 13px;
+        padding: 6px 12px;
+      }
+      
+      .contact-card {
+        padding: 14px 16px;
+      }
+      
+      .contact-left {
+        gap: 12px;
+      }
+      
+      .contact-left i {
+        font-size: 18px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        margin-top: 80px;
+        padding: 0 12px;
+      }
+      
+      .top-bar {
+        top: 8px;
+        width: calc(100% - 16px);
+        max-width: calc(100% - 16px);
+        padding: 6px 10px;
+        flex-direction: column;
+        gap: 6px;
+        border-radius: 16px;
+      }
+      
+      .top-bar .logo {
+        font-size: 13px;
+      }
+      
+      .top-bar a {
+        width: 100%;
+        text-align: center;
+        padding: 6px 12px;
+        font-size: 12px;
+        border-radius: 10px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .hero-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .hero-content h1 {
+        font-size: 24px;
+      }
+      
+      .hero-content p {
+        font-size: 14px;
+      }
+      
+      .hero-buttons {
+        width: 100%;
+      }
+      
+      .btn {
+        flex: 1;
+        min-width: 0;
+      }
+      
+      .avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 10px;
+      }
+      
+      .section {
+        padding: 16px;
+      }
+      
+      .skills {
+        gap: 8px;
+      }
+      
+      .skills span {
+        font-size: 12px;
+        padding: 5px 10px;
+      }
+      
+      .contact-card {
+        padding: 12px 14px;
+      }
+      
+      .contact-left {
+        gap: 10px;
+      }
+      
+      .contact-info .value {
+        font-size: 13px;
+      }
+      
+      .footer {
+        font-size: 12px;
+        margin-top: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="logo">Priyanshu Dev</div>
+    <a href="mailto:priyanshudev037@gmail.com">Hire Me</a>
+  </div>
+
+  <!-- Container -->
+  <div class="container">
+    <!-- Hero -->
+    <div class="card">
+      <div class="hero-header">
+        <div class="hero-title">Designer • Web Developer • ECE Undergrad</div>
+        <span class="status-badge">AVAILABLE FOR WORK</span>
+      </div>
+
+      <div class="hero">
+        <div class="hero-content">
+          <h1>I'm Priyanshu Dev</h1>
+          <p>Designer and Developer blending creativity with engineering. Currently pursuing B.Tech in ECE, building modern web experiences and scalable systems.</p>
+          <div class="hero-buttons">
+            <button class="btn btn-black" onclick="location.href='mailto:priyanshudev037@gmail.com'">Hire Me</button>
+            <button class="btn btn-light" onclick="copyEmail()">Copy Email</button>
+          </div>
+        </div>
+        <div class="avatar">
+          <img src="icon.png" alt="Priyanshu Dev" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div style="display: none; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%;">
+            Upload<br/>iOS Memoji<br/>later
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+      <h2>Skills</h2>
+      <div class="skills">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>React</span>
+        <span>Next.js</span>
+        <span>Node.js</span>
+        <span>MERN Stack</span>
+        <span>REST APIs</span>
+        <span>Git / GitHub</span>
+        <span>UI/UX</span>
+        <span>Figma</span>
+        <span>DSA</span>
+        <span>System Design</span>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="section">
+      <h2>Contact</h2>
+      <a class="contact-card" href="mailto:priyanshudev037@gmail.com">
+        <div class="contact-left">
+          <i class="fas fa-envelope"></i>
+          <div class="contact-info">
+            <div class="label">Email</div>
+            <div class="value">priyanshudev037@gmail.com</div>
+          </div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="contact-card" href="https://github.com/priyansudev" target="_blank">
+        <div class="contact-left">
+          <i class="fab fa-github"></i>
+          <div class="contact-info">
+            <div class="label">GitHub</div>
+            <div class="value">@priyansudev</div>
+          </div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="contact-card" href="https://x.com/priyansudev" target="_blank">
+        <div class="contact-left">
+          <i class="fab fa-x-twitter"></i>
+          <div class="contact-info">
+            <div class="label">X (Twitter)</div>
+            <div class="value">@priyansudev</div>
+          </div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">© <span id="year"></span> Priyanshu Dev</div>
+  </div>
+
+  <script>
+    function copyEmail() {
+      const email = "priyanshudev037@gmail.com";
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email copied: " + email);
+      });
+    }
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
